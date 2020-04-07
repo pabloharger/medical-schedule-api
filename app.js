@@ -3,8 +3,13 @@ dotenv.config()
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const authRoute = require('./routes/auth')
-const userRoute = require('./routes/user')
+const {
+  authRoute,
+  userRoute,
+  dentistRoute,
+  patientRoute,
+  scheduleRoute
+} = require('./routes')
 const verify = require('./routes/verifyToken')
 
 const app = express()
@@ -16,6 +21,9 @@ app.use(bodyParser.json())
 // Routes Middleware
 app.use('/api/v1', authRoute)
 app.use('/api/v1', verify, userRoute)
+app.use('/api/v1', verify, dentistRoute)
+app.use('/api/v1', verify, patientRoute)
+app.use('/api/v1', verify, scheduleRoute)
 
 // Assign the port
 var port = process.env.port || 3000

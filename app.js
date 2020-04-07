@@ -1,11 +1,19 @@
+console.log('===>1')
 const express = require('express')
+console.log('===>2')
 const bodyParser = require('body-parser')
+console.log('===>3')
 const authRoute = require('./routes/auth')
+console.log('===>4')
 const userRoute = require('./routes/user')
+console.log('===>5')
 const dotenv = require('dotenv')
+console.log('===>6')
 const verify = require('./routes/verifyToken')
+console.log('===>7')
 
 dotenv.config()
+console.log('===>8', process.env.DATABASE_URL)
 
 const app = express()
 // fetch form data from the request.

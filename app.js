@@ -1,11 +1,11 @@
+const dotenv = require('dotenv')
+dotenv.config()
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/user')
-const dotenv = require('dotenv')
 const verify = require('./routes/verifyToken')
-
-dotenv.config()
 
 const app = express()
 // fetch form data from the request.

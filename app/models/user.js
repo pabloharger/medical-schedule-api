@@ -1,4 +1,5 @@
 'use strict'
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     firstName: {
@@ -43,6 +44,11 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Minimum 4 characters required in password'
         }
       }
+    },
+    activated: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   }, {})
 

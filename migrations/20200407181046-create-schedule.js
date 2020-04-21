@@ -18,7 +18,7 @@ module.exports = {
       dateTimeBegin: {
         type: Sequelize.DATE
       },
-      dateTieEnd: {
+      dateTimeEnd: {
         type: Sequelize.DATE
       },
       observation: {

@@ -1,5 +1,7 @@
 'use strict'
 
+const User = require('./user')
+
 module.exports = (sequelize, DataTypes) => {
   const Schedule = sequelize.define('schedule', {
     idDentist: {
@@ -14,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    dateTieEnd: {
+    dateTimeEnd: {
       type: DataTypes.DATE,
       allowNull: false
     },
@@ -23,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {})
 
-  // association: a course can belong to any user (belongsTo)
   Schedule.associate = models => {
     Schedule.belongsTo(models.dentist, {
       as: 'dentist',
@@ -36,10 +37,11 @@ module.exports = (sequelize, DataTypes) => {
     Schedule.belongsTo(models.patient, {
       as: 'patient',
       foreignKey: {
-        fieldName: 'idDentist',
+        fieldName: 'idPatient',
         allowNull: false
       }
     })
   }
+
   return Schedule
 }

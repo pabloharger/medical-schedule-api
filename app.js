@@ -3,14 +3,10 @@ dotenv.config()
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const {
-  authRoute,
-  userRoute,
-  dentistRoute,
-  patientRoute,
-  scheduleRoute
-} = require('./routes')
-const verify = require('./routes/verifyToken')
+const createLocaleMiddlewate = require('express-locale')
+const startPolyglot = require('./app/utilities/startPolyglot')
+const { authRoute, userRoute, dentistRoute, patientRoute, scheduleRoute } = require('./app/routes')
+const verify = require('./app/controllers/').auth.verifyToken
 
 const app = express()
 
@@ -18,13 +14,30 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+// Get the user's locale, and set a default in case there's none
+app.use(createLocaleMiddlewate({
+  priority: ['accept-language', 'default'],
+  degault: 'en'
+}))
+
+// Start polyglot and set the language in the req with the phrases to be used
+app.use(startPolyglot)
+
+const baseRoute = '/api/v1'
+
 // Routes Middleware
-app.use('/api/v1', authRoute)
-app.use('/api/v1', verify, userRoute)
-app.use('/api/v1', verify, dentistRoute)
-app.use('/api/v1', verify, patientRoute)
-app.use('/api/v1', verify, scheduleRoute)
+app.use(`${baseRoute}/auth`, authRoute)
+app.use(`${baseRoute}/user`, verify, userRoute)
+app.use(`${baseRoute}/dentist`, verify, dentistRoute)
+app.use(`${baseRoute}/patient`, verify, patientRoute)
+app.use(`${baseRoute}/schedule`, verify, scheduleRoute)
 
 // Assign the port
 var port = process.env.port || 3000
-app.listen(port, () => console.log('server running at port ' + port))
+app.listen(port, () => console.log(`server running at port ${port}`))
+
+// TODO(PH): i18n php site
+// TODO(PH): Change findAll to findPk and findOne
+// TODO(PH): Implement logOut
+// TODO(PH): Add docker data base script
+// TODO(PH): create roles to the operations ????

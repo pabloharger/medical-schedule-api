@@ -13,4 +13,4 @@ rename the file .ENV.SAMPLE to .ENV and fill the variables
 
 ### Heroku Deploy ###
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pabloharger/hodonto-api)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pabloharger/medical-schedule-api)

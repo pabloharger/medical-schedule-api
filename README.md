@@ -8,7 +8,7 @@ If you are using .ENV file, set the property "use_env_variable": "DATABASE_URL" 
 
 run: npx sequelize-cli db:migrate
 
-# ENV
+#### ENV
 rename the file .ENV.SAMPLE to .ENV and fill the variables
 
 ### Heroku Deploy ###

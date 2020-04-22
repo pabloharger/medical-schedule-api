@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (sequelize, DataTypes) => {
-  const Dentist = sequelize.define('dentist', {
+  const Doctor = sequelize.define('doctor', {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -26,5 +26,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {})
 
-  return Dentist
+  return Doctor
 }

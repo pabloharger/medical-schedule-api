@@ -4,7 +4,7 @@ const User = require('./user')
 
 module.exports = (sequelize, DataTypes) => {
   const Schedule = sequelize.define('schedule', {
-    idDentist: {
+    idDoctor: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -26,10 +26,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {})
 
   Schedule.associate = models => {
-    Schedule.belongsTo(models.dentist, {
-      as: 'dentist',
+    Schedule.belongsTo(models.doctor, {
+      as: 'doctor',
       foreignKey: {
-        fieldName: 'idDentist',
+        fieldName: 'idDoctor',
         allowNull: false
       }
     })

@@ -1,41 +1,41 @@
 const router = require('express').Router()
-const { dentist } = require('../controllers')
+const { doctor } = require('../controllers')
 const validator = require('../validator')
 const { procErr } = require('../utilities/processErrors')
 
 /**
- * Get a list of dentist
+ * Get a list of doctor
  * @param  {Request}  req The HTTP Request
  * @param  {Response} res The HTTP Response
  */
-router.get('/', dentist.get)
+router.get('/', doctor.get)
 
 /**
- * Get a dentist by Id
+ * Get a doctor by Id
  * @param  {Request}  req The HTTP Request
  * @param  {Response} res The HTTP Response
  */
-router.get('/:id', dentist.getById)
+router.get('/:id', doctor.getById)
 
 /**
- * Post a new dentist
+ * Post a new doctor
  * @param  {Request}  req The HTTP Request
  * @param  {Response} res The HTTP Response
  */
-router.post('/', validator('dentist.post'), procErr, dentist.post)
+router.post('/', validator('doctor.post'), procErr, doctor.post)
 
 /**
- * Put a dentist
+ * Put a doctor
  * @param  {Request}  req The HTTP Request
  * @param  {Response} res The HTTP Response
  */
-router.put('/:id', validator('dentist.put'), procErr, dentist.put)
+router.put('/:id', validator('doctor.put'), procErr, doctor.put)
 
 /**
- * Delete a new dentist
+ * Delete a new doctor
  * @param  {Request}  req The HTTP Request
  * @param  {Response} res The HTTP Response
  */
-router.delete('/:id', dentist.delete)
+router.delete('/:id', doctor.delete)
 
 module.exports = router

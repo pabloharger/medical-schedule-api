@@ -1,5 +1,5 @@
 const scheduleModel = require('../models').schedule
-const dentistModel = require('../models').dentist
+const doctorModel = require('../models').doctor
 const patientModel = require('../models').patient
 const util = require('./util')
 
@@ -12,8 +12,8 @@ exports.get = (req, res) => {
   scheduleModel.findAll({
     include: [
       {
-        model: dentistModel,
-        as: 'dentist'
+        model: doctorModel,
+        as: 'doctor'
       },
       {
         model: patientModel,
@@ -37,8 +37,8 @@ exports.getById = (req, res) => {
     where: { id: req.params.id },
     include: [
       {
-        model: dentistModel,
-        as: 'dentist'
+        model: doctorModel,
+        as: 'doctor'
       },
       {
         model: patientModel,
@@ -62,8 +62,8 @@ exports.post = (req, res) => {
       const schedule = await scheduleModel.findAll({
         include: [
           {
-            model: dentistModel,
-            as: 'dentist'
+            model: doctorModel,
+            as: 'doctor'
           },
           {
             model: patientModel,
@@ -93,8 +93,8 @@ exports.put = (req, res) => {
       const schedule = await scheduleModel.findAll({
         include: [
           {
-            model: dentistModel,
-            as: 'dentist'
+            model: doctorModel,
+            as: 'doctor'
           },
           {
             model: patientModel,

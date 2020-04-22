@@ -44,11 +44,11 @@ const validators = {
   },
   schedule: {
     post: {
-      idDentist:
-        check('idDentist')
-          .isNumeric().withMessage('field.idDentist.valid')
-          .exists().withMessage('field.idDentist.required')
-          .not().isEmpty().withMessage('field.idDentist.required'),
+      idDoctor:
+        check('idDoctor')
+          .isNumeric().withMessage('field.idDoctor.valid')
+          .exists().withMessage('field.idDoctor.required')
+          .not().isEmpty().withMessage('field.idDoctor.required'),
       idPatient:
         check('idPatient')
           .isNumeric().withMessage('field.idPatient.valid')
@@ -64,11 +64,11 @@ const validators = {
           .not().isEmpty().withMessage('field.dateTimeEnd.required')
     },
     put: {
-      idDentist:
-        check('idDentist')
-          .isNumeric().withMessage('field.idDentist.valid')
-          .exists().withMessage('field.idDentist.required')
-          .not().isEmpty().withMessage('field.idDentist.required')
+      idDoctor:
+        check('idDoctor')
+          .isNumeric().withMessage('field.idDoctor.valid')
+          .exists().withMessage('field.idDoctor.required')
+          .not().isEmpty().withMessage('field.idDoctor.required')
           .optional(),
       idPatient:
         check('idPatient')
@@ -126,13 +126,13 @@ function validator (functionName) {
     case 'auth.forgotPassword': {
       return [validators.email]
     }
-    case 'dentist.post': {
+    case 'doctor.post': {
       return [
         validators.firstName.post,
         validators.lastName.post
       ]
     }
-    case 'dentist.put': {
+    case 'doctor.put': {
       return [
         validators.firstName.put,
         validators.lastName.put
@@ -152,7 +152,7 @@ function validator (functionName) {
     }
     case 'schedule.post': {
       return [
-        validators.schedule.post.idDentist,
+        validators.schedule.post.idDoctor,
         validators.schedule.post.idPatient,
         validators.schedule.post.dateTimeBegin,
         validators.schedule.post.dateTimeEnd
@@ -160,7 +160,7 @@ function validator (functionName) {
     }
     case 'schedule.put': {
       return [
-        validators.schedule.put.idDentist,
+        validators.schedule.put.idDoctor,
         validators.schedule.put.idPatient,
         validators.schedule.put.dateTimeBegin,
         validators.schedule.put.dateTimeEnd

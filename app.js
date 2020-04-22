@@ -5,7 +5,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const createLocaleMiddlewate = require('express-locale')
 const startPolyglot = require('./app/utilities/startPolyglot')
-const { authRoute, userRoute, dentistRoute, patientRoute, scheduleRoute } = require('./app/routes')
+const { authRoute, userRoute, doctorRoute, patientRoute, scheduleRoute } = require('./app/routes')
 const verify = require('./app/controllers/').auth.verifyToken
 
 const app = express()
@@ -28,7 +28,7 @@ const baseRoute = '/api/v1'
 // Routes Middleware
 app.use(`${baseRoute}/auth`, authRoute)
 app.use(`${baseRoute}/user`, verify, userRoute)
-app.use(`${baseRoute}/dentist`, verify, dentistRoute)
+app.use(`${baseRoute}/doctor`, verify, doctorRoute)
 app.use(`${baseRoute}/patient`, verify, patientRoute)
 app.use(`${baseRoute}/schedule`, verify, scheduleRoute)
 

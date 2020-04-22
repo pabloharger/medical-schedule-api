@@ -59,7 +59,7 @@ exports.get = (req, res) => {
  */
 exports.getById = (req, res) => {
   // get user by id
-  userModel.findAll({
+  userModel.findOne({
     where: { id: req.params.id },
     attributes: {
       exclude: ['password']
@@ -69,44 +69,6 @@ exports.getById = (req, res) => {
     .catch(err => util.handleError(res.status(500), err))
 }
 
-// /**
-//  * Post a new user
-//  * @param  {Request}  req The HTTP Request
-//  * @param  {Response} res The HTTP Response
-//  */
-// exports.post = async (req, res) => {
-//   // insert user
-
-//   if (req.body.password) {
-//     // Hash password
-//     const salt = await bcrypt.genSalt(10)
-//     req.body.password = await bcrypt.hash(req.body.password, salt)
-//   }
-
-//   // Check if the user is already in the database
-//   const user = await userModel.findAll({ where: { email: req.body.email } })
-//     .then(data => data[0])
-//     .catch(err => util.handleError(res.status(500), err))
-
-//   // If user already exists return error
-//   if (user) return util.handleResponse(res.status(400), {}, 'Email already exists')
-
-//   userModel.create(req.body)
-//     .then(async data => {
-//       const user = await userModel.findAll({
-//         where: { id: data.id },
-//         attributes: {
-//           exclude: ['password']
-//         }
-//       })
-//         .then(data => data[0])
-//         .catch(err => util.handleError(res.status(500), err))
-
-//       util.handleResponse(res.status(201), { user })
-//     })
-//     .catch(err => util.handleError(res.status(500), err))
-// }
-
 /**
  * Registrate a new user
  * @param  {Request}  req The HTTP Request
@@ -115,8 +77,8 @@ exports.getById = (req, res) => {
 exports.signUp = async (req, res) => {
   try {
     // Check if the user is already in the database
-    let user = await userModel.findAll({ where: { email: req.body.email } })
-      .then(data => data[0])
+    let user = await userModel.findOne({ where: { email: req.body.email } })
+      .then(data => data)
       .catch(error => { throw Object.assign(new Error(), { status: 401, message: error.message }) })
 
     // If user already exists return error
@@ -133,13 +95,13 @@ exports.signUp = async (req, res) => {
     await userTokenActionController.sendActivationEmail(req)
 
     // Select user to return excluding password
-    user = await userModel.findAll({
+    user = await userModel.findOne({
       where: { id: user.id },
       attributes: {
         exclude: ['password']
       }
     })
-      .then(data => data[0])
+      .then(data => data)
       .catch(error => { throw Object.assign(new Error(), { status: 500, message: error.message }) })
 
     util.handleResponse(res.status(201), { user })

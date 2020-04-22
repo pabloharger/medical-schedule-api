@@ -33,7 +33,7 @@ exports.get = (req, res) => {
  */
 exports.getById = (req, res) => {
   // get schedule by id
-  scheduleModel.findAll({
+  scheduleModel.findOne({
     where: { id: req.params.id },
     include: [
       {
@@ -46,7 +46,7 @@ exports.getById = (req, res) => {
       }
     ]
   })
-    .then(data => util.handleResponse(res.status(200), data[0]))
+    .then(data => util.handleResponse(res.status(200), data))
     .catch(err => util.handleError(res.status(500), err))
 }
 
@@ -59,7 +59,7 @@ exports.post = (req, res) => {
   // insert schedule
   scheduleModel.create(req.body)
     .then(async data => {
-      const schedule = await scheduleModel.findAll({
+      const schedule = await scheduleModel.findOne({
         include: [
           {
             model: doctorModel,
@@ -72,11 +72,10 @@ exports.post = (req, res) => {
         ],
         where: { id: data.id }
       })
-        .then(data => data[0])
+        .then(data => data)
         .catch(err => util.handleError(res.status(500), err))
 
       util.handleResponse(res.status(201), schedule)
-      // util.handleResponse(res.status(201), data)
     })
     .catch(err => util.handleError(res.status(500), err))
 }
@@ -90,7 +89,7 @@ exports.put = (req, res) => {
   // update schedule by id
   scheduleModel.update(req.body, { where: { id: req.params.id } })
     .then(async data => {
-      const schedule = await scheduleModel.findAll({
+      const schedule = await scheduleModel.findOne({
         include: [
           {
             model: doctorModel,
@@ -103,7 +102,7 @@ exports.put = (req, res) => {
         ],
         where: { id: req.params.id }
       })
-        .then(data => data[0])
+        .then(data => data)
         .catch(err => util.handleError(res.status(500), err))
 
       util.handleResponse(res.status(201), schedule)

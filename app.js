@@ -36,8 +36,4 @@ app.use(`${baseRoute}/schedule`, verify, scheduleRoute)
 var port = process.env.PORT || 3000
 app.listen(port, () => console.log(`server running at port ${port}`))
 
-// TODO(PH): i18n php site
-// TODO(PH): Change findAll to findPk and findOne
-// TODO(PH): Implement logOut
-// TODO(PH): Add docker data base script
-// TODO(PH): create roles to the operations ????
+// TODO(PH): Check FKs

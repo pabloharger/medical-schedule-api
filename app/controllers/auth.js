@@ -77,8 +77,8 @@ exports.sendActivationEmail = async (req, res) => {
 exports.signIn = async (req, res) => {
   try {
     // Check if the user is already in the database
-    const user = await userModel.findAll({ where: { email: req.body.email } })
-      .then(data => data[0])
+    const user = await userModel.findOne({ where: { email: req.body.email } })
+      .then(data => data)
       .catch(error => {
         throw Object.assign(new Error(), { status: 500, message: error.message })
       })

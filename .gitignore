@@ -245,3 +245,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/git,node,macos,dotenv,windows,visualstudiocode
+
+### Seeders ###
+seeders/

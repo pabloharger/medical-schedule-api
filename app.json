@@ -1,7 +1,7 @@
 {
   "name": "Node Medical Schedule CRUD API",
   "description": "A CRUD API demo made in NodeJS",
-  "repository": "https://github.com/pabloharger/hodonto-api",
+  "repository": "https://github.com/pabloharger/medical-schedule-api",
   "logo": "https://avatars2.githubusercontent.com/u/8269931?s=460&u=fd0212df0339f495a62597824a1a81c99ef7405f&v=4",
-  "keywords": ["NodeJS", "Express", "Sequelize"]
+  "keywords": ["NodeJS", "Express", "Sequelize", "API"]
 }

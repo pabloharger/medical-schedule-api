@@ -1,4 +1,4 @@
-# hodonto-api
+# NodeJS Medical Schedule API
 NodeJS Medical Schedule CRUD API
 
 #### Database

@@ -26,5 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {})
 
+  Doctor.associate = models => {
+    Doctor.hasMany(models.schedule, { as: 'schedules' })
+  }
+
   return Doctor
 }

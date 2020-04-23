@@ -44,16 +44,16 @@ const validators = {
   },
   schedule: {
     post: {
-      idDoctor:
-        check('idDoctor')
-          .isNumeric().withMessage('field.idDoctor.valid')
-          .exists().withMessage('field.idDoctor.required')
-          .not().isEmpty().withMessage('field.idDoctor.required'),
-      idPatient:
-        check('idPatient')
-          .isNumeric().withMessage('field.idPatient.valid')
-          .exists().withMessage('field.idPatient.required')
-          .not().isEmpty().withMessage('field.idPatient.required'),
+      doctorId:
+        check('doctorId')
+          .isNumeric().withMessage('field.doctorId.valid')
+          .exists().withMessage('field.doctorId.required')
+          .not().isEmpty().withMessage('field.doctorId.required'),
+      patientId:
+        check('patientId')
+          .isNumeric().withMessage('field.patientId.valid')
+          .exists().withMessage('field.patientId.required')
+          .not().isEmpty().withMessage('field.patientId.required'),
       dateTimeBegin:
         check('dateTimeBegin')
           .exists().withMessage('field.dateTimeBegin.required')
@@ -64,17 +64,17 @@ const validators = {
           .not().isEmpty().withMessage('field.dateTimeEnd.required')
     },
     put: {
-      idDoctor:
-        check('idDoctor')
-          .isNumeric().withMessage('field.idDoctor.valid')
-          .exists().withMessage('field.idDoctor.required')
-          .not().isEmpty().withMessage('field.idDoctor.required')
+      doctorId:
+        check('doctorId')
+          .isNumeric().withMessage('field.doctorId.valid')
+          .exists().withMessage('field.doctorId.required')
+          .not().isEmpty().withMessage('field.doctorId.required')
           .optional(),
-      idPatient:
-        check('idPatient')
-          .isNumeric().withMessage('field.idPatient.valid')
-          .exists().withMessage('field.idPatient.required')
-          .not().isEmpty().withMessage('field.idPatient.required')
+      patientId:
+        check('patientId')
+          .isNumeric().withMessage('field.patientId.valid')
+          .exists().withMessage('field.patientId.required')
+          .not().isEmpty().withMessage('field.patientId.required')
           .optional(),
       dateTimeBegin:
         check('dateTimeBegin')
@@ -152,16 +152,16 @@ function validator (functionName) {
     }
     case 'schedule.post': {
       return [
-        validators.schedule.post.idDoctor,
-        validators.schedule.post.idPatient,
+        validators.schedule.post.doctorId,
+        validators.schedule.post.patientId,
         validators.schedule.post.dateTimeBegin,
         validators.schedule.post.dateTimeEnd
       ]
     }
     case 'schedule.put': {
       return [
-        validators.schedule.put.idDoctor,
-        validators.schedule.put.idPatient,
+        validators.schedule.put.doctorId,
+        validators.schedule.put.patientId,
         validators.schedule.put.dateTimeBegin,
         validators.schedule.put.dateTimeEnd
       ]

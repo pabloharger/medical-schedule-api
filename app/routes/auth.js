@@ -1,15 +1,22 @@
 const router = require('express').Router()
 const { auth } = require('../controllers')
+const { user } = require('../controllers')
 const validator = require('../validator')
 const { procErr } = require('../utilities/processErrors')
 
 /**
- * Log in
+ * Sign in
  * @param  {Request}  req The HTTP Request
  * @param  {Response} res The HTTP Response
  */
-// router.post('/signin', auth.signIn)
 router.post('/signin', validator('auth.signIn'), procErr, auth.signIn)
+
+/**
+ * Sign Up
+ * @param  {Request}  req The HTTP Request
+ * @param  {Response} res The HTTP Response
+ */
+router.post('/signup', validator('auth.signUp'), procErr, user.signUp)
 
 /**
  * Forgot Password

@@ -35,5 +35,3 @@ app.use(`${baseRoute}/schedule`, verify, scheduleRoute)
 // Assign the port
 var port = process.env.PORT || 3000
 app.listen(port, () => console.log(`server running at port ${port}`))
-
-// TODO(PH): Check FKs
